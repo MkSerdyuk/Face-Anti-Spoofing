@@ -1,0 +1,29 @@
+name: face-as
+channels:
+- pytorch
+- nvidia
+- conda-forge
+dependencies:
+- python=3.10  # 3.11 are blocked by pytorch atm
+- albumentations
+- blas=*=mkl  # enforce MKL build for math libraries
+- hydra-core
+- matplotlib
+- opencv
+- pandas
+- pytorch
+- pytorch-cuda=11.7
+- pytorch-lightning
+- scikit-learn
+- seaborn
+- torchinfo  # summary for torch models
+- torchvision
+- tqdm
+# dev packages
+- icecream
+- ipykernel
+- ipywidgets
+- mypy
+- mypy_extensions
+- pandas-stubs
+- pretty_errors
