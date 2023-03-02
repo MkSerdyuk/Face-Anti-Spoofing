@@ -1,21 +1,11 @@
 import torch
 from torchvision import transforms as T
-import torchvision
-import torch.nn as nn
 
 
 class Antispoof:
 
-    def __init__(self, model_path):
-        self.model = torchvision.models.mobilenet_v3_large()
-        self.model.fc = nn.Sequential(
-            nn.Dropout(p=0.3),
-            nn.Linear(512, 2),
-        )
-        self.model.load_state_dict(torch.load(
-            model_path, map_location=torch.device('cpu')
-            )
-            )
+    def __init__(self, model):
+        self.model = model
         self.model.eval()
 
     def model_predict(self, frame):
