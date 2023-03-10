@@ -15,10 +15,10 @@ while True:
 
         for x, y, w, h in faces:
             prediction = model.model_predict(frame[x: x+w][y: y+w])
-            if prediction:
-                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0))
+            if not prediction:
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
                 continue
-            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255))
+            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
     except:
         pass
 
