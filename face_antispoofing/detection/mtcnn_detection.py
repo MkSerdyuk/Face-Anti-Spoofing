@@ -1,9 +1,12 @@
-from facenet_pytorch import InceptionResnetV1
+from facenet_pytorch import MTCNN
 
 
 class MTCNNDetector:
 
-    resnet = InceptionResnetV1(preatrained='vggface2').eval()
+    def __init__(self):
+        self.mtcnn = MTCNN(keep_all=True)
 
     def detect_face(self, frame):
-        return self.resnet(frame.unsqueeze(0))
+        faces, _ = self.mtcnn.detect(frame)
+        faces = [map(int, face) for face in faces]
+        return faces

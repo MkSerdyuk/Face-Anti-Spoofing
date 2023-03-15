@@ -1,25 +1,25 @@
 import cv2
 from face_antispoofing.antispoofing import antispoof
-from face_antispoofing.detection import face_detector, cascade_detection
+from face_antispoofing.detection import face_detector, mtcnn_detection
 from models import resnet_antispoof
 
 vid = cv2.VideoCapture(0)
 model = antispoof.Antispoof(resnet_antispoof.ResnetAntispoof())
-detector = face_detector.FaceDetector(cascade_detection.CascadeDetector())
+detector = face_detector.FaceDetector(mtcnn_detection.MTCNNDetector())
 
 while True:
     ret, frame = vid.read()
 
-    try: 
+    try:
         faces = detector.detect_face(frame)
-
-        for x, y, w, h in faces:
-            prediction = model.model_predict(frame[x: x+w][y: y+w])
+        frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        for x0, y0, x1, y1 in faces:
+            prediction = model.model_predict(frame_rgb[x0: x1][y0: y1])
             if not prediction:
-                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                cv2.rectangle(frame, (x0, y0), (x1, y1), (0, 255, 0), 2)
                 continue
-            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
-    except:
+            cv2.rectangle(frame, (x0, y0), (x1, y1), (0, 0, 255), 2)
+    except: 
         pass
 
     cv2.imshow("frame", frame)
