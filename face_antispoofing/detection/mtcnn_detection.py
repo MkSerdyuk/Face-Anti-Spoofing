@@ -2,7 +2,6 @@ from facenet_pytorch import MTCNN
 
 
 class MTCNNDetector:
-
     def __init__(self):
         self.mtcnn = MTCNN(keep_all=True)
 

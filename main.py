@@ -14,12 +14,12 @@ while True:
         faces = detector.detect_face(frame)
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         for x0, y0, x1, y1 in faces:
-            prediction = model.model_predict(frame_rgb[x0: x1][y0: y1])
+            prediction = model.model_predict(frame_rgb[x0:x1][y0:y1])
             if not prediction:
                 cv2.rectangle(frame, (x0, y0), (x1, y1), (0, 255, 0), 2)
                 continue
             cv2.rectangle(frame, (x0, y0), (x1, y1), (0, 0, 255), 2)
-    except: 
+    except:
         pass
 
     cv2.imshow("frame", frame)
