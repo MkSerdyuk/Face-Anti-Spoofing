@@ -1,4 +1,5 @@
 import torch
+import numpy as np
 from torchvision import transforms as T
 
 
@@ -14,4 +15,4 @@ class Antispoof:
         frame = transform(frame)
         with torch.no_grad():
             logits = self.model(frame.unsqueeze(0))
-            return torch.argmax(logits, dim=1).cpu().numpy()
+            return torch.argmax(logits, dim=1).cpu().numpy(), np.array(logits)
