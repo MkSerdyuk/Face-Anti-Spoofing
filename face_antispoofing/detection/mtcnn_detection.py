@@ -3,7 +3,7 @@ from facenet_pytorch import MTCNN
 
 class MTCNNDetector:
     def __init__(self):
-        self.mtcnn = MTCNN(min_face_size=200)  # keep_all=True, )
+        self.mtcnn = MTCNN(select_largest=True, min_face_size=200)
 
     def detect_face(self, frame):
         faces, _ = self.mtcnn.detect(frame)
