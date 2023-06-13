@@ -9,7 +9,7 @@ model = antispoof.Antispoof(mobilenet_antispoof.MobileNetAntispoof())
 detector = face_detector.FaceDetector(mtcnn_detection.MTCNNDetector())
 PADDING = 10
 
-FRAMES_PER_CALCULATION = 5  # How often the result is recalculated
+FRAMES_PER_CALCULATION = 7  # How often the result is recalculated
 
 frame_counter = 0
 logits_sum = np.array([[0, 0]], dtype=float)
@@ -50,8 +50,6 @@ while True:
 
                 prediction = prediction_sum
 
-            print(prediction)
-
             if prediction:
                 if prediction != -1:
                     color = (0, 255, 0)
@@ -74,7 +72,9 @@ while True:
             cv2.putText(frame, f"spoof {logits[0][0]}", (x0, y1 + 2 * h), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
 
     except:
-        pass
+        prediction_sum = -1
+        frame_counter = 1
+        cv2.imshow("frame", frame)
 
     cv2.imshow("frame", frame)
 
