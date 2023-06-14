@@ -10,16 +10,17 @@
 
 1) Клонирование репозитория
     ```
-    git clone https://github.com/MkSerdyuk/Face-Anti-Spoofing/tree/dev.git
-    ```
-
-2) Запуск установщика
-    ```
+    git clone https://github.com/MkSerdyuk/Face-Anti-Spoofing/.git 
     cd Face-Anti-Spoofing
-    setup.bat
     ```
 
-3) Запуск демонстрации
+2) Создание и запуск вирутальной среды
     ```
-    python -m
+    python -m venv venv
+    venv/scripts/activate
+    ```
+
+3) Импорт зависимостей
+    ```
+    pip install -r requirements.txt
     ```
