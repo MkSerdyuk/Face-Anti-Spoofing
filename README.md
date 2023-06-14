@@ -2,31 +2,30 @@
 
 Репозиторий для проекта системы антиспуфинга лиц.
 
-## Project Organization
+## Обучение модели
 
-```text
-    ├── configs                <- Directory with YAML configs for scripts.
-    ├── data
-    ├── models                 <- Trained and serialized models, model predictions, or model summaries.
-    ├── notebooks              <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                             the creator's initials, and a short `-` delimited description, e.g.
-    │                             `01-ys-initial-eda`.
-    │
-    ├── scripts                <- Top-level scripts that use face_antispoofing package, e.g.
-    │                             pipeline stages, optuna optimization, feature selection etc.
-    │
-    ├── face_antispoofing      <- Source code for use in this project.
-    │   └── __init__.py
-    │
-    ├── .editorconfig          <- Editors (PyCharm, VS Code, etc) configuration.
-    ├── .flake8                <- Flake8 & WPS linter configuration.
-    ├── .gitignore
-    ├── environment.yaml       <- Conda project environment file.
-    ├── pyproject.toml         <- General config with project metadata & tools configuration.
-    ├── README.md              <- The top-level README for developers using this project.
-    └── setup.py               <- Makes project pip installable (pip install -e .).
-```
+Код для обучения моедли находится [здесь](https://github.com/MkSerdyuk/Face-Anti-Spoofing/blob/dev/notebooks/FaceAntiSpoofing.ipynb)
 
-## Project Initialization
+## Инструкция по установке
 
-Add instructions here!
+1) Клонирование репозитория:
+    ```
+    git clone https://github.com/MkSerdyuk/Face-Anti-Spoofing/.git 
+    cd Face-Anti-Spoofing
+    ```
+
+2) Создание и запуск вирутальной среды:
+    ```
+    python -m venv venv
+    venv/scripts/activate
+    ```
+
+3) Импорт зависимостей:
+    ```
+    pip install -r requirements.txt
+    ```
+
+4) Запуск демонстрации:
+    ``` 
+    python main.py
+    ```
