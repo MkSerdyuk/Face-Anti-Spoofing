@@ -8,19 +8,24 @@
 
 ## Инструкция по установке
 
-1) Клонирование репозитория
+1) Клонирование репозитория:
     ```
     git clone https://github.com/MkSerdyuk/Face-Anti-Spoofing/.git 
     cd Face-Anti-Spoofing
     ```
 
-2) Создание и запуск вирутальной среды
+2) Создание и запуск вирутальной среды:
     ```
     python -m venv venv
     venv/scripts/activate
     ```
 
-3) Импорт зависимостей
+3) Импорт зависимостей:
     ```
     pip install -r requirements.txt
+    ```
+
+4) Запуск демонстрации:
+    ``` 
+    python main.py
     ```
